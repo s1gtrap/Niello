@@ -7,15 +7,16 @@
     {{ `<!--[if lte IE 9]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
     <![endif]-->` | safeHTML }}
-
+      
   <!-- Add your site or application content here -->
     <div class="flex-column">
         {{ partial "banner.html" . }}
         <div class="home">
-            <div class="logo">
-                <h1><a href="/">{{.Title}}</a></h1>
+          {{ partial "nav.html" . }}  
+          <div class="title">
+                <h1>{{ .Title }}</h1>
             </div>
-            {{ partial "nav.html" . }}
+            
             <div>
 			<h1>{{ len .Data.Terms }} Tags</h1>
 				{{ $data := .Data }}

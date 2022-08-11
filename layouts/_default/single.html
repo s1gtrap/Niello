@@ -12,16 +12,31 @@
     <div class="flex-column">
         {{ partial "banner.html" . }}
         <div class="home">
+            {{ partial "nav.html" . }}
+            
+        <!-- commenting out logo to see how a article looks like without the logo div-->
+            <!--
             <div class="logo">
                 <h1><a href="/">{{.Site.Title}}</a></h1>
             </div>
-            {{ partial "nav.html" . }}
+            -->
+
             <div>
                 <article>
-                    <h3>{{ .Title }}</h3>
+                    <h1>{{ .Title }}</h1>
+                    <h3>Skrevet af:  
+                        <a href='../../authors/{{ range .Param "authors" }}{{ . | urlize }}{{ end }}'>
+                        {{ range .Param "authors" }}
+                        {{ . }}
+                        {{ end }}</a>
+                    </h3>
+
+                    
+
                     <div class="less">
                         <time>Published: {{ .PublishDate.Format "Monday, Jan 2, 2006" }}</time>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{{ .ReadingTime }} minute read&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Using {{ .WordCount }} words
-						<div class="tag-single">
+						
+                        <div class="tag-single">
 							<time>Tags:&nbsp;</time>
 							<ul>
 								{{ range (.GetTerms "tags") }}

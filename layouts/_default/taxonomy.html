@@ -7,15 +7,28 @@
     {{ `<!--[if lte IE 9]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
     <![endif]-->` | safeHTML }}
-
+        
   <!-- Add your site or application content here -->
     <div class="flex-column">
         {{ partial "banner.html" . }}
         <div class="home">
-            <div class="logo">
-                <h1><a href="/">{{.Title}}</a></h1>
-            </div>
             {{ partial "nav.html" . }}
+
+            <div class="title">
+                <h1>
+                    {{ .Params.name }}
+                </h1>    
+            </div>
+            
+
+            <div class="description">
+                <p>{{ .Params.description }}</p>
+            </div>
+
+            <h3>
+                Udgivne artikler:
+            </h3>
+
             <div>
             {{ range .Pages }}
                 <article>
